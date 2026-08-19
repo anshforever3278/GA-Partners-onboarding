@@ -1,0 +1,68 @@
+{
+  "theme": "light",
+  "archetype": "4 (Swiss & High-Contrast)",
+  "vibe": "Authoritative, trustworthy, efficient, highly dense operations dashboard. Linear/Vercel/Ramp aesthetic.",
+  "colors": {
+    "background": "#FFFFFF",
+    "surface": "#F9FAFB",
+    "border": "#E5E7EB",
+    "text_primary": "#111827",
+    "text_secondary": "#4B5563",
+    "accent_primary": "#000000",
+    "accent_blue": "#0F52BA",
+    "status_green": "#10B981",
+    "status_yellow": "#F59E0B",
+    "status_red": "#EF4444"
+  },
+  "typography": {
+    "headings": "Chivo",
+    "body": "IBM Plex Sans",
+    "monospace": "JetBrains Mono",
+    "rules": [
+      "No Inter, Roboto, Open Sans.",
+      "Use JetBrains Mono for all numeric data, dates, and status codes to ensure crisp alignment.",
+      "Headings should use tracking-tight."
+    ]
+  },
+  "spacing_and_layout": {
+    "system": "Tailwind standard, but highly dense.",
+    "grid": "Control Room Grid (tight gaps gap-4 or gap-6, dense information layout).",
+    "padding": "Use p-4 or p-6 for widgets. Tight density.",
+    "borders": "Expose the skeleton. Grid Borders (The Technical Look). Use border-collapse style layouts where possible."
+  },
+  "components": {
+    "cards": "Flat background, 1px subtle border (border-gray-200), NO shadow by default. Max 4px border-radius.",
+    "buttons": "Sharp or 4px radius. Primary buttons are pure black. Secondary buttons are white with 1px border. Explicit hover states (e.g., hover:bg-gray-800 for primary).",
+    "badges": "Strict semantic colors (Green=Completed, Yellow=Day 5 Escalation, Red=Day 10 Escalation). Small, bold, uppercase text with tracking-wider.",
+    "tables": "Dense row padding, pinned left/right columns if necessary. Use monospace for IDs and metrics.",
+    "icons": "lucide-react, keep stroke-width consistent (1.5 or 2)."
+  },
+  "media": {
+    "logo": {
+      "url": "https://images.pexels.com/photos/5477692/pexels-photo-5477692.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "description": "Ampersand logo for G&A Partners. Use minimally in the top left nav."
+    },
+    "avatars": [
+      {
+        "url": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDF8MHwxfHNlYXJjaHwyfHxwcm9mZXNzaW9uYWwlMjBoZWFkc2hvdCUyMGJ1c2luZXNzfGVufDB8fHx8MTc4MTg0Nzg1Mnww&ixlib=rb-4.1.0&q=85",
+        "role": "Onboarding Project Manager (OBPM)"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1699899657680-421c2c2d5064?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDF8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBoZWFkc2hvdCUyMGJ1c2luZXNzfGVufDB8fHx8MTc4MTg0Nzg1Mnww&ixlib=rb-4.1.0&q=85",
+        "role": "Onboarding Payroll Analyst (OBPA)"
+      }
+    ]
+  },
+  "testing_requirements": [
+    "All interactive and key informational elements MUST include a data-testid attribute.",
+    "Convention: kebab-case, role-based. Example: data-testid='simulate-day-button'"
+  ],
+  "instructions_to_main_agent": [
+    "Build a React app using Tailwind CSS and customized Shadcn UI.",
+    "Use .js files instead of .tsx files. Do NOT generate TypeScript files.",
+    "Ensure the UI looks like a premium enterprise B2B tool (Ramp/Linear). Use dense layouts and high contrast.",
+    "Use the provided colors and typography. DO NOT use generic fonts like Inter or Roboto.",
+    "Implement the 6 core capabilities from the problem statement.",
+    "Ensure 'Simulate Day', 'Simulate CSA Upload', and 'Sync to ClientSpace' buttons are prominently featured for demo purposes."
+  ]
+}

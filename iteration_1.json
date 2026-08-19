@@ -1,0 +1,27 @@
+{
+  "summary": "First-pass smoke test of G&A Onboarding POC. All critical backend endpoints and primary frontend flow verified end-to-end against the public URL. Real Claude Sonnet 4.5 calls returned non-empty narratives with no '[auto-fallback:' markers. Seeded fixtures behave as specified (Acme 2 CSA discrepancies, Beacon WC fail, Crestline NY SUTA fail, Acme Day-5 esc level 1, Evergreen Day-10 esc level 2).",
+  "tested_scope": ["backend", "frontend", "auth", "integration"],
+  "passed": [
+    "POST /api/auth/login returns JWT + user payload (admin/admin123)",
+    "Auth gating: GET /api/clients without Bearer -> 401",
+    "GET /api/clients returns 6 clients with doc_progress, docs_received/total, max_escalation computed (Acme 5/6 esc=1, Evergreen 3/6 esc=2)",
+    "GET /api/dashboard/summary returns projected_cycle_days=38, days_saved=12, escalations_d5=1, escalations_d10>=1",
+    "GET /api/team returns 10 members",
+    "POST /api/clients/{id}/csa/simulate-upload (Acme) returns 2 discrepancies [optional_services, suta_coverage], status=Fail, real AI narrative (438 chars, no fallback)",
+    "POST /api/clients/{id}/preflight Beacon -> Fail (Missing WC EMP-007); Crestline -> Fail (Missing NY SUTA)",
+    "POST /api/clients/{id}/communications classifies 'payroll' -> Payroll/Payroll Specialist; real Claude draft (no fallback)",
+    "POST /api/clients/{id}/status-report -> 1585-char real Claude weekly report (no fallback)",
+    "POST /api/clients/{id}/simulate-day increments days_in_phase and updates escalation_level",
+    "POST /api/clients/{id}/phases/Data Collection/complete -> 400 when docs Pending (Acme)",
+    "Frontend: Login renders, admin/admin123 -> Dashboard with all 6 client rows + escalation banner text",
+    "Frontend: Client row click navigates to /clients/{id}; all 6 tabs render (Overview, Documents, CSA Validation, Pre-Flight, Comms, Integrations)",
+    "Frontend: Simulate +1 Day button clickable; Simulate CSA Upload renders csa-narrative (501 chars); Run Pre-Flight renders preflight-report"
+  ],
+  "failed": [],
+  "action_items": [
+    "Note: a 6th client 'Aashu' exists in DB from a prior create-client test (in addition to the 5 seeded). Not a bug — confirms POST /api/clients works — but main agent may wish to clean test DB before demo."
+  ],
+  "success_rate": {"backend": "100%", "frontend": "100%"},
+  "retest_needed": false,
+  "full_testing_deferred": true
+}
